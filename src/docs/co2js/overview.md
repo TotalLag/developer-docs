@@ -13,10 +13,10 @@ eleventyNavigation:
 
 One day, the internet will be powered by renewable energy. Until that day comes, there’ll be a CO2 cost that comes with every byte of data that’s uploaded or downloaded. By being able to calculate these emissions, developers can be empowered to create more efficient, lower carbon apps, websites, and software.
 
-<div class="alert bg-secondary text-white">
+<div class="text-white alert bg-secondary">
   <div class="items-start">
     <div>
-      <h2 class="text-white font-bold my-3 gap-2 flex items-center"><svg xmlns="http://www.w3.org/2000/svg" class="text-white inline flex-shrink-0 w-6 h-6" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <h2 class="flex items-center gap-2 my-3 font-bold text-white"><svg xmlns="http://www.w3.org/2000/svg" class="flex-shrink-0 inline w-6 h-6 text-white" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
   <circle cx="12" cy="12" r="9" />
   <polyline points="12 7 12 12 15 15" />
@@ -25,7 +25,7 @@ One day, the internet will be powered by renewable energy. Until that day comes,
     </div>
   </div>
   <div class="flex-none">
-    <a href="https://www.thegreenwebfoundation.org/news/start-calculating-digital-carbon-emissions-in-5-minutes-with-co2-js/" class="btn btn-lg btn-accent no-underline hover:text-white">Go to guide</a>
+    <a href="https://www.thegreenwebfoundation.org/news/start-calculating-digital-carbon-emissions-in-5-minutes-with-co2-js/" class="no-underline btn btn-lg btn-accent hover:text-white">Go to guide</a>
   </div>
 </div>
 
@@ -53,16 +53,15 @@ The data from CO2.js can also be used as part of internal monitoring tools and d
 
 The above a just a few examples of the many and varied ways CO2.js can be applied to provide carbon estimates for data transfer. If you’re using CO2.js in production we’d love to hear how! [Contact us](https://www.thegreenwebfoundation.org/support-form/) via our website.
 
-<ul class="list-disc px-0 prose-lg flex gap-6 flex-wrap">
+<ul class="flex flex-wrap gap-6 px-0 prose-lg list-disc">
 {%- for post in caseStudies -%}
-            <li class="card w-full md:w-96 bg-base-100 shadow-xl not-prose">
-            <figure class="not-prose"><img src="{% postFeatureImage post.featured_media %}" alt="" class=" not-prose" loading="lazy"/></figure>
+            <li class="w-full shadow-xl card md:w-96 bg-base-100 not-prose">
              <div class="card-body not-prose">
     <h3 class="card-title not-prose">{{ post.title.rendered | safe }}
     </h3>
     <span>{{ post.excerpt.rendered | safe }}</span>
-    <div class="card-actions justify-end not-prose">
-      <a href="{{ post.link }}" class="btn btn-secondary text-white no-underline">Read more</a>
+    <div class="justify-end card-actions not-prose">
+      <a href="{{ post.link }}" class="text-white no-underline btn btn-secondary">Read more</a>
     </div>
   </div>
                 </li>

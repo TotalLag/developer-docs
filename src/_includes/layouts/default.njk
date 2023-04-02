@@ -12,7 +12,7 @@
     <div class="drawer drawer-mobile">
       <input id="my-drawer-2" type="checkbox" aria-label="Expand mobile navigation menu" class="drawer-toggle"/>
       <div class="drawer-content">
-        <div class="w-full navbar bg-base lg:hidden">
+        <div class="w-full navbar bg-base-200 lg:hidden">
           <div class="flex-none lg:hidden">
             <label for="my-drawer-2" class="btn btn-square btn-ghost">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewbox="0 0 24 24" class="inline-block w-6 h-6 stroke-current">
@@ -20,14 +20,14 @@
               </svg>
             </label>
             <ul
-              class="menu menu-horizontal max-w-xs w-60 md:w-full">
+              class="max-w-xs menu menu-horizontal w-60 md:w-full">
               <!-- Navbar menu content here -->
               <li>
                 <a href="/" aria-label="Homepage">
                   <img
                     src="/img/logo_horizontal.svg"
                     alt="The Green Web Foundation typographic logo"
-                    class="max-w-xs w-full"
+                    class="w-full max-w-xs"
                     height="58px"
                     width="765px"/>
                 </a>
@@ -36,14 +36,14 @@
           </div>
         </div>
         <!-- Page content here -->
-        <div class="min-h-screen flex flex-col justify-between">
+        <div class="flex flex-col justify-between min-h-screen">
           <div class="p-6 pb-16">
             <div class="flex flex-col-reverse justify-between gap-6 xl:flex-row">
-              <div class="prose w-full max-w-4xl flex-grow">
+              <div class="flex-grow w-full max-w-4xl prose">
                 {% if relatedPR or pageVersion %}
-                  <div class="alert alert-warning mb-8">
+                  <div class="mb-8 alert alert-warning">
                     <div>
-                      <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-6 w-6" fill="none" viewbox="0 0 24 24"><path
+                      <svg xmlns="http://www.w3.org/2000/svg" class="flex-shrink-0 w-6 h-6 stroke-current" fill="none" viewbox="0 0 24 24"><path
                           stroke-linecap="round"
                           stroke-linejoin="round"
                           stroke-width="2"
@@ -70,7 +70,7 @@
       </div>
       <div class="drawer-side">
         <label for="my-drawer-2" class="drawer-overlay"></label>
-        <div class="menu p-4 overflow-y-auto w-80 bg-base-200 text-base-content">
+        <div class="p-4 overflow-y-auto menu w-80 bg-base text-base-content">
           <ul>
             <li class=" lg:block sm:hidden">
               <a href="/" aria-label="Homepage">
@@ -85,8 +85,8 @@
             <li>
               <a href="/" aria-label="Homepage">Home</a>
             </li>
-            <li class="menu-title py-2">
-              <span class="text-sm font-bold font-mono">Libraries</span>
+            <li class="py-2 menu-title">
+              <span class="font-mono text-sm font-bold">Libraries</span>
             </li>
             <!-- Sidebar content here -->
             {%- for main in collections.main -%}
@@ -98,24 +98,24 @@
                 {% endif %}
                 <ul tabindex="0" class="collapse collapse-arrow rounded-box">
                   <li>
-                    <input type="checkbox" aria-label="Expand {{ main.data.libraryName }}" class="peer invisible absolute" {{ openCollapse }}/>
+                    <input type="checkbox" aria-label="Expand {{ main.data.libraryName }}" class="absolute invisible peer" {{ openCollapse }}/>
                     <div class="collapse-title">
                       <span class="collapse-title-text peer-checked:font-bold">{{ main.data.libraryName }}</span>
                     </div>
-                    <ul class="collapse-content p-0 pt-1">
+                    <ul class="p-0 pt-1 collapse-content">
                       {% set navPages = collections.all | getDocumentsFromCollection(main.data.repo) | eleventyNavigation %}
                       {%- for entry in navPages %}
                         {% if sectionTitle != entry.sectionTitle %}
                           {% set sectionTitle = entry.sectionTitle %}
                           <li class="menu-title">
-                            <p class="divider text-sm font-bold font-mono">{{ sectionTitle }}</p>
+                            <p class="font-mono text-sm font-bold divider">{{ sectionTitle }}</p>
                           </li>
                         {% endif %}
-                        <li {% if entry.url == page.url %} class="bg-secondary text-white pl-4" {% else %} class="pl-4" {% endif %}>
+                        <li {% if entry.url == page.url %} class="pl-4 text-white bg-secondary" {% else %} class="pl-4" {% endif %}>
                           <a href="{{ entry.url | url }}">{{ entry.title }}</a>
                           {%- if entry.children.length -%}
                             {%- for child in entry.children %}
-                              <li {% if child.url == page.url %} class="bg-secondary text-white pl-4" {% else %} class="pl-4" {% endif %}>
+                              <li {% if child.url == page.url %} class="pl-4 text-white bg-secondary" {% else %} class="pl-4" {% endif %}>
                                 <a href="{{ child.url | url }}">{{ child.title }}</a>
                               {% endfor -%}
                             </li>
@@ -128,8 +128,8 @@
               </li>
             </ul>
           {%- endfor -%}
-          <li class="menu-title py-2">
-            <span class="text-sm font-bold font-mono">APIs</span>
+          <li class="py-2 menu-title">
+            <span class="font-mono text-sm font-bold">APIs</span>
             <!-- Sidebar content here -->
             {%- for main in collections.apiMain -%}
               <li>
@@ -140,24 +140,24 @@
                 {% endif %}
                 <ul tabindex="0" class="collapse collapse-arrow rounded-box">
                   <li>
-                    <input type="checkbox" aria-label="Expand {{ main.data.libraryName }}" class="peer invisible absolute" {{ openCollapse }}/>
+                    <input type="checkbox" aria-label="Expand {{ main.data.libraryName }}" class="absolute invisible peer" {{ openCollapse }}/>
                     <div class="collapse-title">
                       <span class="collapse-title-text peer-checked:font-bold">{{ main.data.libraryName }}</span>
                     </div>
-                    <ul class="collapse-content p-0 pt-1">
+                    <ul class="p-0 pt-1 collapse-content">
                       {% set navPages = collections.all | getDocumentsFromCollection(main.data.repo) | eleventyNavigation %}
                       {%- for entry in navPages %}
                         {% if sectionTitle != entry.sectionTitle %}
                           {% set sectionTitle = entry.sectionTitle %}
                           <li class="menu-title">
-                            <p class="divider text-sm font-bold font-mono">{{ sectionTitle }}</p>
+                            <p class="font-mono text-sm font-bold divider">{{ sectionTitle }}</p>
                           </li>
                         {% endif %}
-                        <li {% if entry.url == page.url %} class="bg-secondary text-white pl-4" {% else %} class="pl-4" {% endif %}>
+                        <li {% if entry.url == page.url %} class="pl-4 text-white bg-secondary" {% else %} class="pl-4" {% endif %}>
                           <a href="{{ entry.url | url }}">{{ entry.title }}</a>
                           {%- if entry.children.length -%}
                             {%- for child in entry.children %}
-                              <li {% if child.url == page.url %} class="bg-secondary text-white pl-4" {% else %} class="pl-4" {% endif %}>
+                              <li {% if child.url == page.url %} class="pl-4 text-white bg-secondary" {% else %} class="pl-4" {% endif %}>
                                 <a href="{{ child.url | url }}">{{ child.title }}</a>
                               {% endfor -%}
                             </li>
